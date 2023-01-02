@@ -1,17 +1,18 @@
 package com.hasnat.annotation;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MainApp {
 
 	public static void main(String[] args) {
 		
-		ClassPathXmlApplicationContext context = new 
-				ClassPathXmlApplicationContext("applicationContext.xml");
+		AnnotationConfigApplicationContext context = new 
+				AnnotationConfigApplicationContext(SportsConfig.class);
 		
-		Coach theCoach = context.getBean("trackCoach", Coach.class);
+		PushupCoach theCoach = context.getBean("pushupCoach", PushupCoach.class);
 		
 		theCoach.getWorkout();
+		System.out.println(" By " + theCoach.coachName);
 		
 		context.close();
 	}
